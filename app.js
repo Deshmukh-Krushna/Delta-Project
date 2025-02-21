@@ -25,7 +25,7 @@ const userRouter = require("./routes/user.js")
 
 const  dbUrl = process.env.ATLASDB_URL;
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 8080;
 
 app.listen(port, ()  =>
   { 
