@@ -13,10 +13,7 @@ body {
     flex: 1;
 }
 .navbar {
-   height: 5rem;
-   background-color: white;
-   padding-bottom: 70px;
-   position : sticky;
+
 }
 .fa-compass{
     color: #fe424d;

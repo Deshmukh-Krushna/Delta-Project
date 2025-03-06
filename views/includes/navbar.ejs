@@ -1,57 +1,90 @@
-
 <style>
-  .search-btn{
+  .search-btn {
     background-color: #fe424d;
     border-radius: 25px;
-    padding: 0 1rem 0 1rem;
-    
+    padding: 0 1rem; /* Removed extra 0 1rem */
+    border: none; /* Add this to remove default button border */
   }
-  .search-btn:hover{
+
+  .search-btn:hover {
     background-color: #fe424d;
   }
+
   .search-btn i {
     display: inline;
     margin-right: 0.5rem;
   }
+
   .search-inp {
-    padding: 0.5rem 3rem 0.5rem 3rem;
+    padding: 0.5rem 3rem;
     border-radius: 25px;
+    border: 1px solid #ced4da; /* Optional: Add a border to the input */
+  }
+
+  /* Improved Mobile Navbar Styling */
+  @media (max-width: 768px) {
+    .container{
+      align-items: center;
+    }
+    .navbar-nav {
+  flex-direction: column;
+  width: 80%; /* Occupy full width on mobile */
+  margin-top: -10px; /* Adjust top margin to account for navbar height */
+  position: sticky;
+  margin-right: 65px; /* Added padding at the bottom */
+  align-items: center;
+}
+
+    .navbar-nav a {
+      text-align: center;
+      width: 100%;
+      padding: 0.75rem 1rem; /* Add some padding to links */
+      color: white; /* Set link color for visibility on dark background */
+    }
+
+   
   }
 </style>
 
-<nav class="navbar fixed-top navbar-expand-md bg-body-light border-botom ">
-    
-  <div class="container-fluid">
-      <a class="navbar-brand" href="/listings"><i class="fa-solid fa-compass"></i></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
+<nav class="navbar fixed-top navbar-expand-md navbar-light bg-light">
+  <div class="container ">
+    <a class="navbar-brand" href="/listings"><i class="fa-solid fa-compass"></i></a>
 
-          <a class="nav-link" href="/listings">All Listings</a>        
-        </div>
+    <button id="toggler-button" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <div class="navbar-nav ms-auto ">
-          <form class="d-flex" role="search">
-            <input class="form-control me-2 search-inp" type="search" placeholder="Search Destinations">
-            <button class="btn search-btn" type="submit">
-              <i class="fa-solid fa-magnifying-glass"></i>Search
-            </button>
-          </form>
-        </div>
-        
-        <div class="navbar-nav ms-auto" >
-          
-          <a class="nav-link" href="/listings/new">Airbnb your home</a> 
-          <% if(!currUser) {%>
-          <a class="nav-link active" aria-current="page" href="/signup"><b>SignUP</b></a>
-          <a class="nav-link" href="/login"><b>Login</b></a>
-          <% } %>
-          <% if(currUser) {%>
-          <a class="nav-link" href="/logout"><b>Logout</b></a>
-          <% } %>
-        </div>
-      </div>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <ul class="navbar-nav ms-auto">  <li class="nav-item">
+            <a class="nav-link" href="/listings">All Listings</a>
+        </li>
+        <li class="nav-item">
+            <form class="d-flex">
+                <input class="form-control me-2 search-inp" type="search" placeholder="Search Destinations">
+                <button class="btn search-btn" type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>Search
+                </button>
+            </form>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/listings/new">Airbnb your home</a>
+        </li>
+
+        <% if(!currUser) {%>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/signup"><b>SignUP</b></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login"><b>Login</b></a>
+          </li>
+        <% } %>
+
+        <% if(currUser) {%>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout"><b>Logout</b></a>
+          </li>
+        <% } %>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>

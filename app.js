@@ -22,7 +22,6 @@ const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js")
 
 // const { wrap } = require("module");
-
 const  dbUrl = process.env.ATLASDB_URL;
 
 const port = process.env.PORT || 8080;
@@ -36,7 +35,7 @@ app.listen(port, ()  =>
 app.set("view enging", "ejs");
 app.set("views",path.join( __dirname , "views"));
 app.use(express. urlencoded({extended : true}))
-app.use(methodOveride("_method"));
+app.use(methodOveride("_method"));  
 app.engine("ejs", ejsMate); 
 app.use(express.static(path.join(__dirname,"/public"))); 
 
@@ -45,9 +44,9 @@ const store = MongoStore.create
   mongoUrl : dbUrl,
   crypto : {
     secret : process.env.SECRET
-  },
+  }, 
   touchAfter : 24*3600,
-});
+}); 
 
 store.on("error", () => {
   console.log("error in mongo session store",err);
